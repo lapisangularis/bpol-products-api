@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Application\Adapter;
 
-use App\Application\Adapter\AdapterFromRequestTrait;
 use App\Domain\Port\CreateProductInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,13 +15,13 @@ class CreateProduct implements CreateProductInterface
      * @Assert\Type("string")
      * @Assert\NotBlank()
      */
-    protected $name;
+    private $name;
 
     /**
      * @Assert\Type("int")
      * @Assert\NotBlank()
      */
-    protected $price;
+    private $price;
 
     public function __construct($name, $price)
     {

@@ -14,8 +14,8 @@ class Product
 
     public function __construct(DomainProduct $product)
     {
-        $this->id = $product->getId();
-        $this->name = $product->getName();
-        $this->price = $product->getPrice();
+        $this->id = $product->id;
+        $this->name = $product->name;
+        $this->price = $product->price;
     }
 }

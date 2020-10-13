@@ -6,9 +6,9 @@ namespace App\Application\Presenter;
 
 class Presenter
 {
-    public $data;
+    public object $data;
 
-    public function __construct($data)
+    public function __construct(object $data)
     {
         $this->data = $data;
     }

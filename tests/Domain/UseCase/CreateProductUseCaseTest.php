@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class CreateProductUseCaseTest extends TestCase
 {
-    public function testCreate_NewProduct_ProductCreated()
+    public function testCreate_NewProduct_ProductCreated(): void
     {
         $createProductUseCase = $this->getCreateProductUseCase();
         $product = $createProductUseCase->create($this->getInputData(
@@ -20,11 +20,11 @@ class CreateProductUseCaseTest extends TestCase
             'Test product'
         ));
 
-        $this->assertEquals('Test product', $product->getName());
-        $this->assertEquals(1000, $product->getPrice());
+        $this->assertEquals('Test product', $product->name);
+        $this->assertEquals(1000, $product->price);
     }
 
-    private function getInputData(int $price, string $name)
+    private function getInputData(int $price, string $name): CreateProductInterface
     {
         $createProduct = $this->createMock(CreateProductInterface::class);
         $createProduct->expects($this->any())->method('getName')->willReturn($name);
@@ -36,18 +36,8 @@ class CreateProductUseCaseTest extends TestCase
     private function getCreateProductUseCase(): CreateProductUseCase
     {
         return new CreateProductUseCase(
-            $this->getProductGatewayMock(),
-            $this->getValidatorGatewayMock()
+            $this->createMock(ProductGatewayInterface::class),
+            $this->createMock(ValidatorGatewayInterface::class)
         );
-    }
-
-    private function getProductGatewayMock(): ProductGatewayInterface
-    {
-        return $this->createMock(ProductGatewayInterface::class);
-    }
-
-    private function getValidatorGatewayMock()
-    {
-        return $this->createMock(ValidatorGatewayInterface::class);
     }
 }

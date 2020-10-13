@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ValidatorGatewayAdapter implements ValidatorGatewayInterface
 {
-    protected ValidatorInterface $validator;
+    private ValidatorInterface $validator;
 
     public function __construct(ValidatorInterface $validator)
     {

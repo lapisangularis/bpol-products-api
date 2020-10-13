@@ -8,5 +8,5 @@ use App\Domain\Exception\ValidationViolationException;
 
 interface ValidatorGatewayInterface
 {
-    public function validate($value, ValidationViolationException $exception);
+    public function validate($value, ValidationViolationException $exception): void;
 }

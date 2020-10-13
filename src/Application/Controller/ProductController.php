@@ -16,10 +16,9 @@ class ProductController extends BaseAbstractController
     /**
      * @FOSRest\Post("/product")
      */
-    public function postAction(
-        Request $request,
-        CreateProductUseCase $createProductUseCase
-    ): Response {
+    public function postAction(Request $request, CreateProductUseCase $createProductUseCase): Response
+    {
+        /** @var CreateProduct $createRequestData */
         $createRequestData = CreateProduct::createFromRequest($request);
         $product = $createProductUseCase->create($createRequestData);
 

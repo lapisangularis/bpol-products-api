@@ -9,12 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductControllerTest extends AbstractControllerTest
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
-    public function testPost_ProductData_ProductCreated()
+    public function testPost_ProductData_ProductCreated(): void
     {
         $requestData = [
             'name' => 'Test product',

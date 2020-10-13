@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Application\Controller;
 
 use App\Tests\Application\AbstractFixturesTest;
-use Symfony\Component\HttpClient\HttpClient as Client;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-abstract class AbstractControllerTest extends AbstractFixturesTest
+abstract class AbstractControllerTest extends WebTestCase
 {
-    /**
-     * @var Client
-     */
-    protected static $client;
-
-    protected $apiPrefix;
+    protected static KernelBrowser $client;
 
     public function setUp(): void
     {
@@ -42,7 +38,7 @@ abstract class AbstractControllerTest extends AbstractFixturesTest
         return $asArray ? $decodedResponse['data'] : $decodedResponse->data;
     }
 
-    protected function getDecodedResponse($asArray = false)
+    private function getDecodedResponse($asArray = false)
     {
         return json_decode(self::$client->getResponse()->getContent(), $asArray);
     }
