@@ -18,6 +18,6 @@ final class ProductRepository extends BaseRepository implements ProductGatewayIn
     public function save(Product $product): void
     {
         $this->_em->persist($product);
-        $this->_em->flush($product);
+        $this->_em->flush();
     }
 }
