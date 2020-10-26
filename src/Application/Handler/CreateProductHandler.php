@@ -16,7 +16,7 @@ class CreateProductHandler
         $this->createProductUseCase = $createProductUseCase;
     }
 
-    public function handle(CreateProduct $command)
+    public function handle(CreateProduct $command): void
     {
         $this->createProductUseCase->create($command);
     }
