@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App\Application\Presenter;
 
-use App\Domain\Entity\Product as DomainProduct;
-
-class ProductPresenter extends Presenter
+class ProductPresenter
 {
-    public function __construct(DomainProduct $product)
+    public string $id;
+    public string $name;
+    public int $price;
+
+    public function __construct(string $id, string $name, int $price)
     {
-        parent::__construct(new Product($product));
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
     }
 }

@@ -23,7 +23,7 @@ class CreateProductUseCase extends AbstractUseCase
     {
         $this->validate($createProduct);
 
-        $product = new Product($createProduct->getName(), $createProduct->getPrice());
+        $product = new Product($createProduct->getUuid(), $createProduct->getName(), $createProduct->getPrice());
 
         $this->productGateway->save($product);
 

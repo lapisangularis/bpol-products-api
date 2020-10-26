@@ -33,9 +33,7 @@ abstract class AbstractControllerTest extends WebTestCase
 
     protected function getDecodedResponseData($asArray = true)
     {
-        $decodedResponse = $this->getDecodedResponse($asArray);
-
-        return $asArray ? $decodedResponse['data'] : $decodedResponse->data;
+        return $this->getDecodedResponse($asArray);
     }
 
     private function getDecodedResponse($asArray = false)

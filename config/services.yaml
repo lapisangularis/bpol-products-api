@@ -28,7 +28,6 @@ services:
 
     App\Domain\Port\ValidatorGatewayInterface: '@App\Application\Adapter\ValidatorGatewayAdapter'
 
-#    app.listener.exception:
-#        class: 'App\Application\EventListener\ExceptionListener'
-#        tags:
-#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+    App\Application\Handler\CreateProductHandler:
+        tags:
+            - { name: tactician.handler, typehints: true }

@@ -16,17 +16,20 @@ class CreateProductUseCaseTest extends TestCase
     {
         $createProductUseCase = $this->getCreateProductUseCase();
         $product = $createProductUseCase->create($this->getInputData(
+            '89d5a5e0-2d0c-4128-873b-49145e1ad98a',
             1000,
             'Test product'
         ));
 
+        $this->assertEquals('89d5a5e0-2d0c-4128-873b-49145e1ad98a', $product->uuid);
         $this->assertEquals('Test product', $product->name);
         $this->assertEquals(1000, $product->price);
     }
 
-    private function getInputData(int $price, string $name): CreateProductInterface
+    private function getInputData(string $uuid, int $price, string $name): CreateProductInterface
     {
         $createProduct = $this->createMock(CreateProductInterface::class);
+        $createProduct->expects($this->any())->method('getUuid')->willReturn($uuid);
         $createProduct->expects($this->any())->method('getName')->willReturn($name);
         $createProduct->expects($this->any())->method('getPrice')->willReturn($price);
 

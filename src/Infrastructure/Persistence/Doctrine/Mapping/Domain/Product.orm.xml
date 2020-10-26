@@ -9,6 +9,8 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="uuid" column="uuid" type="string" unique="true"/>
+
         <field name="name" column="name" type="string" length="255"/>
 
         <field name="price" column="price" type="integer"/>
